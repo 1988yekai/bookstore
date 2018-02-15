@@ -6,12 +6,9 @@ import { Button, Select, Input, Row, Col, Form, FormItem, } from 'element-ui'
 import 'font-awesome/css/font-awesome.css'
 
 Vue.use(Button)
-Vue.use(Select)
 Vue.use(Input)
 Vue.use(Row)
 Vue.use(Col)
-Vue.use(Form)
-Vue.use(FormItem)
 
 Vue.config.productionTip = false
 

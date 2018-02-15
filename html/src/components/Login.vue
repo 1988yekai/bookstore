@@ -7,7 +7,7 @@
       <label for="username" style="float:letf; width:50px">用户名:</label> <el-input v-model="username" placeholder="请输入用户名" style="float:letf; width:250px"></el-input>
     </el-row>
     <el-row class="password">
-        <label for="password" style="float:letf; width:50px">密　码:</label> <el-input v-model="password" placeholder="请输入密码" style="float:letf; width:250px"></el-input>
+        <label for="password" style="float:letf; width:50px">密　码:</label> <el-input v-model="password" placeholder="请输入密码" style="float:letf; width:250px" type="password"></el-input>
     </el-row>
     <div class="sub">
         <el-button size="small" round type="primary">提交</el-button> <el-button size="small" round type="danger" v-on:click="reset">重置</el-button>
