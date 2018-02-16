@@ -4,13 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import { Button, Select, Input, Row, Col, Form, FormItem, } from 'element-ui'
 import 'font-awesome/css/font-awesome.css'
+// var VueResource = require('vue-resource');
+import VueResource from 'vue-resource'
 
+Vue.use(VueResource);
 Vue.use(Button)
 Vue.use(Input)
 Vue.use(Row)
 Vue.use(Col)
 
-Vue.config.productionTip = false
+// Vue.http.options.emulateJSON = true;
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

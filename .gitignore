@@ -22,3 +22,11 @@
 hs_err_pid*
 */dist
 */node_modules
+*/.gitignore
+
+*/.idea
+*/.mvn
+*/target
+*/mvnw
+*/mvnw.cmd
+*/*.iml
