@@ -5,6 +5,12 @@ import App from './App'
 import { Button, Select, Input, Row, Col, Form, FormItem, } from 'element-ui'
 import 'font-awesome/css/font-awesome.css'
 // var VueResource = require('vue-resource');
+/*
+import list from './list'; //es6写法
+//等价于
+var list = require('./list');
+ */
+
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
