@@ -1,4 +1,4 @@
-package com.yek.myBookStore.Filter;
+package com.yek.myBookStore.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

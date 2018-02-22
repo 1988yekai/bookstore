@@ -1,6 +1,6 @@
 package com.yek.myBookStore;
 
-import com.yek.myBookStore.Filter.DomainFilter;
+import com.yek.myBookStore.filter.DomainFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
