@@ -60,7 +60,7 @@
         //在vue-resources中会自动在路径上加入callback的函数名，得到的结果就是result
         this.$http.post(url, formData).then(function (result) {
           var res = result.body;
-          if (res.login == 'ok') {
+          if (res.code == '0002') {
             // http://localhost:8080/one.html
             alert("登录成功！");
             window.location.assign("http://localhost:8080/one.html")

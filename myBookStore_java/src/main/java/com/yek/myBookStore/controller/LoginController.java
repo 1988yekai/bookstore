@@ -85,7 +85,7 @@ public class LoginController {
                 subject.login(token);
                 // 登录成功
                 obj.put("msg", "登录成功");
-                obj.put("code", "0000");
+                obj.put("code", "0002");
                 obj.put("state", true);
                 return obj;
             } catch (AuthenticationException e) {
