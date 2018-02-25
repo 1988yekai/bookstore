@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 跨域问题解决
  * Created by Administrator on 2018/2/16 0016.
  */
 public class DomainFilter implements Filter{
