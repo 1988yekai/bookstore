@@ -23,7 +23,7 @@ import java.util.Map;
  * Created by yek on 2018/2/16 0016.
  */
 @RestController
-@RequestMapping("/Login")
+@RequestMapping("/login")
 public class LoginController {
 
     /**

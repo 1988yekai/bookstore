@@ -1,5 +1,6 @@
 package com.yek.myBookStore.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.yek.myBookStore.service.UserInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -42,6 +43,17 @@ public class UserInfoController {
     @ResponseBody
     public String userInfoAdd(){
         return "userInfoAdd";
+    }
+
+    /**
+     * 用户添加;
+     * @return
+     */
+    @RequestMapping("/register")
+//    @RequiresPermissions("userInfo:add")//权限管理;
+    @ResponseBody
+    public JSONObject userInfoRegister (){
+        return null;
     }
     /**
      * 用户删除;

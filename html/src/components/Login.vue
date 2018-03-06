@@ -62,8 +62,18 @@
           var res = result.body;
           if (res.code == '0002') {
             // http://localhost:8080/one.html
-            alert("登录成功！");
-            window.location.assign("http://localhost:8080/one.html")
+//            alert("登录成功！");
+            this.$alert('这是一段内容', '标题名称', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$message({
+                  type: 'info',
+                  message: `action: ${ action }`
+                });
+              }
+            });
+            //js url跳转
+            window.location.assign("http://localhost:8080/one.html");
           }
         });
       }
