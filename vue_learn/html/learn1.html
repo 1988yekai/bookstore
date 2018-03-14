@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn one start</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<!-- v-text 字符绑定，简写双大括号 {{}}
+作用 ： 操作元素中的纯文本
+快捷方式 ： {{}}
+-->
+<div id="app1">
+    <h2 v-text=message></h2>
+    {{message}}
+</div>
+
+<!-- v-bind  属性绑定
+ 作用 ： 绑定标签属性，：后面是标签属性名-->
+<div id="app2">
+    <!--<span v-bind:title="message2">鼠标悬停几秒试试！</span>-->
+    <!-- v-bind 可以简写-->
+    <span :title="message2">鼠标悬停几秒试试！</span>
+</div>
+<!-- v-html="" html绑定
+作用 ： 操作元素中的HTML标签 v-text会将元素当成纯文本输出，v-html会将元素当成HTML标签解析后输出
+-->
+<div id="app3" v-html="message3"></div>
+
+<!-- v-if="" 条件判断-->
+<div id="app4">
+    <p v-if="message4">true 能看见我！</p>
+</div>
+
+</body>
+<script>
+    var app = new Vue({
+        el:'#app1',
+        data:{
+            message:'hello vue!<button>a</button>'
+        }
+    });
+    var app2 = new Vue({
+        el:'#app2',
+        data:{
+            message2:'页面加载于：'+ new Date().toLocaleString()
+        }
+    });
+    var app3 = new Vue({
+        el:'#app3',
+        data:{
+            message3:'<button>click me!</button>'
+        }
+    })
+    var app4 = new Vue({
+        el:'#app4',
+        data:{
+            message4:true
+        }
+    })
+
+</script>
+</html>
