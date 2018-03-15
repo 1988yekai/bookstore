@@ -31,7 +31,22 @@
 <div id="app4">
     <p v-if="message4">true 能看见我！</p>
 </div>
-
+<!--
+v-for="" 循环
+ ** 注意不要和 v-if 嵌套使用, 可以通过计算属性得到条件值
+ -->
+<div id="app5">
+    <ol>
+        <li v-for="item in items" v-text="item.text"></li>
+    </ol>
+</div>
+<!-- v-on 指令添加一个事件监听器，通过它调用在 Vue 实例中定义的方法
+ v-on:click="reverseMessage" 简写 @click="reverseMessage"
+ -->
+<div id="app6">
+    <!--<p>{{message6}}  <button v-on:click="reverseMessage">逆转消息</button> </p>-->
+    <p>{{message6}}  <button @click="reverseMessage">逆转消息</button> </p>
+</div>
 </body>
 <script>
     var app = new Vue({
@@ -51,11 +66,28 @@
         data:{
             message3:'<button>click me!</button>'
         }
-    })
+    });
     var app4 = new Vue({
         el:'#app4',
         data:{
             message4:true
+        }
+    });
+    var app5 = new Vue({
+        el:'#app5',
+        data:{
+            items:[{text:"item1"},{text:"item2"},{text:"item3"},{text:"item4"}]
+        }
+    });
+    var app6 = new Vue({
+        el:'#app6',
+        data:{
+            message6: "hello world!"
+        },
+        methods:{
+            reverseMessage:function(){
+                this.message6 = this.message6.split('').reverse().join('');
+            }
         }
     })
 
