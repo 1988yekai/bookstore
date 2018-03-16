@@ -31,3 +31,5 @@ hs_err_pid*
 */mvnw.cmd
 */*.iml
 /html/package-lock.json
+/.idea/vcs.xml
+/.idea
