@@ -1,4 +1,6 @@
-package com.yek.designPattern.factoryPattern.interfaceAndImpl;
+package com.yek.designPattern.common.shapeImpl;
+
+import com.yek.designPattern.common.Shape;
 
 /**
  * Created by Administrator on 2018-3-16.
