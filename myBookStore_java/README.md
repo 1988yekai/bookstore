@@ -1,4 +1,6 @@
 # bookstore java code
+> http://localhost:8090/bookstore/login/doLogin?username=admin&password=123456
+http://localhost:8090/bookstore/userInfo/userList
 
 #1.外部配置-命令行参数配置
 

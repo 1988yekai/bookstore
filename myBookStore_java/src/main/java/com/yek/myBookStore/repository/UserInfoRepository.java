@@ -18,5 +18,11 @@ public interface UserInfoRepository extends CrudRepository<UserInfo, Long> {
      */
     UserInfo findByUsername(String username);
 
+//    @Query(value = "SELECT u.uid,u.username,u.name,u.password,u.salt,u.state FROM UserInfo u",
+//            countQuery = "SELECT count(*) FROM UserInfo",
+//            nativeQuery = true)
+    //查询指定列
+//    @Query(value = "SELECT u.uid,u.username,u.name,u.state FROM UserInfo u")
+    @Query(value = "SELECT new UserInfo(u.uid,u.username,u.name,u.state) FROM UserInfo u")
     PageImpl<UserInfo> findAll(Pageable pageable);
 }
