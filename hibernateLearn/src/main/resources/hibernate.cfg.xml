@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://192.168.1.100:3306/hibernate_learn?serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root3306</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache ** hibernate3 以后没有了-->
+        <!--<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>-->
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!--是否格式化SQL语句  -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 启用getCurrentSession，默认未启用 -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <mapping class="com.yek.hibernateLearn.entity.Department" />
+        <mapping class="com.yek.hibernateLearn.entity.Employee" />
+        <mapping class="com.yek.hibernateLearn.entity.SalaryGrade" />
+        <mapping class="com.yek.hibernateLearn.entity.Timekeeper" />
+
+        <!--更新数据库表-->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+
+    </session-factory>
+
+</hibernate-configuration>
