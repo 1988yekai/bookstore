@@ -1,5 +1,8 @@
 package com.yek.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.yek.entity.QStudent;
 import com.yek.entity.Student;
 import com.yek.repository.StudentRepository;
 import com.yek.service.StudentService;
@@ -31,6 +34,11 @@ public class StudentServiceImpl implements StudentService {
 //        PageRequest page = new PageRequest(pageNumber - 1,pageSize);
         PageImpl<Student> studentPage = studentRepository.findAll(page);
 
+        BooleanExpression s1 = QStudent.student.name.eq("s1");
+        Student one = studentRepository.findOne(s1);
+        one.setClasses(null);
+        one.setTeacherList(null);
+        System.out.println(JSON.toJSON(one));
         return studentPage;
     }
 }

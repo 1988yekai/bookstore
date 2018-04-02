@@ -55,12 +55,12 @@ public class Classes implements Serializable {
         this.name = name;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Classes{" +
                 "cid=" + cid +
                 ", name='" + name + '\'' +
                 ", studentList=" + studentList +
                 '}';
-    }
+    }*/
 }

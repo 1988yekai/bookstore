@@ -22,8 +22,11 @@ https://www.cnblogs.com/zhufu9426/p/7873153.html
 
 ####QueryDSL
 参考网址 https://blog.csdn.net/liuchuanhong1/article/details/70244261?utm_source=gold_browser_extension
+> 注意：目前支持springboot 版本 1.5.8.RELEASE， 2.0.0.RELEASE测试失败
+
 1、 pom依赖
-    <!--query dsl -->  
+
+        <!--query dsl -->  
         <dependency>  
             <groupId>com.querydsl</groupId>  
             <artifactId>querydsl-jpa</artifactId>  

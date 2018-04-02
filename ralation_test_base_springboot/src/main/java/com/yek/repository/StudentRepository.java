@@ -1,9 +1,12 @@
 package com.yek.repository;
 
+import com.querydsl.core.types.Predicate;
 import com.yek.entity.Student;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,7 +14,8 @@ import java.util.List;
  * UserInfo持久化类
  * Created by yek on 2018-2-24.
  */
-public interface StudentRepository extends CrudRepository<Student, Long> {
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Long>, QueryDslPredicateExecutor<Student> {
     /**
      * 通过username查找用户信息
      */
@@ -24,4 +28,6 @@ public interface StudentRepository extends CrudRepository<Student, Long> {
 //    @Query(value = "SELECT u.uid,u.username,u.name,u.state FROM UserInfo u")
 //    @Query(value = "SELECT new UserInfo(u.uid,u.username,u.name,u.state) FROM UserInfo u")
     PageImpl<Student> findAll(Pageable pageable);
+
+    Student findOne(Predicate predicate);
 }
