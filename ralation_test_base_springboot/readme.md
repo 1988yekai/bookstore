@@ -13,8 +13,72 @@ value:是集合的属性名。（自己定义的属性名）
 - springboot介绍 https://blog.csdn.net/isea533/article/details/50412212
 - 实体主键生成策略 http://www.javacui.com/opensource/362.html
 - jpa关系注解（1对1，多对多，1对多） https://www.cnblogs.com/nelson-hu/p/7289289.html
+- Spring data JPA示例 https://blog.csdn.net/liuchuanhong1/article/details/52042477
 - mappedBy注解 https://www.cnblogs.com/ShawnYuki/p/6363547.html
 - webjar查询网站 http://www.webjars.org/
 - thymeleaf模板 https://blog.csdn.net/u012706811/article/details/52185345
 https://www.cnblogs.com/zhufu9426/p/7873153.html
 - bootstrap-table示例 https://blog.csdn.net/hanxue_tyc/article/details/54917227
+
+####QueryDSL
+参考网址 https://blog.csdn.net/liuchuanhong1/article/details/70244261?utm_source=gold_browser_extension
+1、 pom依赖
+    <!--query dsl -->  
+        <dependency>  
+            <groupId>com.querydsl</groupId>  
+            <artifactId>querydsl-jpa</artifactId>  
+        </dependency>  
+        <dependency>  
+            <groupId>com.querydsl</groupId>  
+            <artifactId>querydsl-apt</artifactId>  
+            <scope>provided</scope>  
+        </dependency>  
+
+2、pom文件中，加入编译插件
+
+            <plugin>  
+                <groupId>com.mysema.maven</groupId>  
+                <artifactId>apt-maven-plugin</artifactId>  
+                <version>1.1.3</version>  
+                <executions>  
+                    <execution>  
+                        <goals>  
+                            <goal>process</goal>  
+                        </goals>  
+                        <configuration>  
+                            <outputDirectory>target/generated-sources/java</outputDirectory>  
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>  
+                        </configuration>  
+                    </execution>  
+                </executions>  
+            </plugin>  
+3、 编写实体类，mvn compile, 生成对应 QXX.class 查询类型，剪切到实体类同包下。
+4、 使用示例：
+
+    import org.springframework.data.jpa.repository.JpaRepository;  
+    import org.springframework.data.querydsl.QueryDslPredicateExecutor;  
+    import com.xxx.xxx.entity.User;  
+    public interface UserRepositoryDls extends JpaRepository<User, Integer>, QueryDslPredicateExecutor<User>{// 继承QueryDslPredicateExecutor接口  
+    } 
+QueryDslPredicateExecutor接口提供了如下方法：
+
+    public interface QueryDslPredicateExecutor<T> {  
+        T findOne(Predicate predicate);  
+        Iterable<T> findAll(Predicate predicate);  
+        Iterable<T> findAll(Predicate predicate, Sort sort);  
+        Iterable<T> findAll(Predicate predicate, OrderSpecifier<?>... orders);  
+        Iterable<T> findAll(OrderSpecifier<?>... orders);  
+        Page<T> findAll(Predicate predicate, Pageable pageable);  
+        long count(Predicate predicate);  
+        boolean exists(Predicate predicate);  
+    } 
+测试代码：
+
+    public User findUserByUserName(final String userName){  
+    /** 
+     * 该例是使用spring data QueryDSL实现 
+     */  
+        QUser quser = QUser.user;  
+        Predicate predicate = quser.name.eq(userName);// 根据用户名，查询user表  
+        return repository.findOne(predicate);  
+    }  
