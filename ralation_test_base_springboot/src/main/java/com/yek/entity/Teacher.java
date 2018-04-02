@@ -1,6 +1,6 @@
 package com.yek.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -19,6 +19,7 @@ import java.util.Set;
  * Created by Administrator on 2018-03-31.
  */
 @Entity
+@JsonIgnoreProperties(value = { "students"})
 public class Teacher implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -28,15 +29,16 @@ public class Teacher implements Serializable {
 
     //老师到学生 多对多
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "teacherList",fetch = FetchType.LAZY) // student端管理
-    private Set<Student> studentList = new HashSet<>();
+    private Set<Student> students = new LinkedHashSet<>();
 
-    @JsonIgnore
-    public Set<Student> getStudentList() {
-        return studentList;
+//    @JsonBackReference(value="user-movement")
+//    @JsonBackReference//阻止2次以上的循环调用
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    public void setStudentList(Set<Student> studentList) {
-        this.studentList = studentList;
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 
     public long getTid() {
@@ -60,7 +62,6 @@ public class Teacher implements Serializable {
         return "Teacher{" +
                 "tid=" + tid +
                 ", name='" + name + '\'' +
-                ", studentList=" + studentList +
                 '}';
     }
 }

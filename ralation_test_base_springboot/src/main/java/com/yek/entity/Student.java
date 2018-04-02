@@ -1,5 +1,7 @@
 package com.yek.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -18,7 +21,9 @@ import java.util.Set;
  * Created by Administrator on 2018-03-31.
  */
 @Entity
+@JsonIgnoreProperties(value = { "student"})
 public class Student implements Serializable {
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long sid;//学生id
@@ -32,13 +37,13 @@ public class Student implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cid")// 在多端（从表的外键）添加外键字段指向一端（主表的主键）的主键字
     private Classes classes;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "one") //mappedBy = "one" 表示one是一对多管理的被维护端， 既当添加many时顺带添加一个one
 
     //学生到老师 多对多
     @ManyToMany(fetch = FetchType.EAGER) // 立即从数据库中进行加载数据
-    @JoinTable(name = "TeachersAndStudent", joinColumns = { @JoinColumn(name = "sid") }, inverseJoinColumns = {
-            @JoinColumn(name = "tid") })
-    private Set<Teacher> teacherList;
+    @JoinTable(name = "TeachersAndStudent",
+            schema = "student",
+            joinColumns = { @JoinColumn(name = "sid") }, inverseJoinColumns = {@JoinColumn(name = "tid") })
+    private Set<Teacher> teacherList = new LinkedHashSet<>();
 
     public Classes getClasses() {
         return classes;

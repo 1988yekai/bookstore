@@ -1,6 +1,6 @@
 package com.yek.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -19,24 +19,25 @@ import java.util.Set;
  * Created by Administrator on 2018-03-31.
  */
 @Entity
+@JsonIgnoreProperties(value = { "students"})
 public class Classes implements Serializable {
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long cid;// 班级id
 
     @Column
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classes",fetch = FetchType.LAZY) //mappedBy = "one" 表示one是一对多管理的被维护端， 既当添加many时顺带添加一个one
-    private Set<Student> studentList = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classes",fetch = FetchType.EAGER) //mappedBy = "one" 表示one是一对多管理的被维护端， 既当添加many时顺带添加一个one
+    private Set<Student> students = new LinkedHashSet<>();
     //班级到学生 1对多
-    @JsonIgnore
-    public Set<Student> getStudentList() {
-        return studentList;
+//    @JsonBackReference(value="user-movement")//阻止2次以上的循环调用
+//    @JsonBackReference//阻止2次以上的循环调用
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    public void setStudentList(Set<Student> studentList) {
-        this.studentList = studentList;
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 
     public long getCid() {
@@ -60,7 +61,6 @@ public class Classes implements Serializable {
         return "Classes{" +
                 "cid=" + cid +
                 ", name='" + name + '\'' +
-                ", studentList=" + studentList +
                 '}';
     }
 }
