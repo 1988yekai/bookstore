@@ -1,9 +1,8 @@
 package com.yek.service;
 
 import com.yek.entity.Student;
-import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,5 +10,5 @@ import java.util.Map;
  */
 
 public interface StudentService {
-    PageImpl getStrudentListByPage(Map<String, Object> param);
+    Page<Student> getStrudentListByPage(Map<String, Object> param);
 }

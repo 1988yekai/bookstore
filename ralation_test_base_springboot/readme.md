@@ -28,7 +28,7 @@ https://www.cnblogs.com/zhufu9426/p/7873153.html
 
 ####QueryDSL
 参考网址 https://blog.csdn.net/liuchuanhong1/article/details/70244261?utm_source=gold_browser_extension
-> 注意：目前支持springboot 版本 1.5.8.RELEASE， 2.0.0.RELEASE测试失败
+> 注意：springboot 版本 1.5.8.RELEASE 和 2.0.0.RELEASE 类名有区别
 
 1、 pom依赖
 
@@ -70,6 +70,7 @@ https://www.cnblogs.com/zhufu9426/p/7873153.html
     public interface UserRepositoryDls extends JpaRepository<User, Integer>, QueryDslPredicateExecutor<User>{// 继承QueryDslPredicateExecutor接口  
     } 
 QueryDslPredicateExecutor接口提供了如下方法：
+> *注意 2.0.0版本更新为 QuerydslPredicateExecutor
 
     public interface QueryDslPredicateExecutor<T> {  
         T findOne(Predicate predicate);  
@@ -91,3 +92,10 @@ QueryDslPredicateExecutor接口提供了如下方法：
         Predicate predicate = quser.name.eq(userName);// 根据用户名，查询user表  
         return repository.findOne(predicate);  
     }  
+
+5、 QSort 的使用：
+
+    QSort sort = new QSort(QStudent.student.name.asc());
+    sort.and(QStudent.student.sid.desc());//添加下一个排序条件
+    QPageRequest page = new QPageRequest(pageNumber - 1, pageSize, sort);
+
