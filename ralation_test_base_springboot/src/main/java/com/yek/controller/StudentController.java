@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.yek.entity.Student;
 import com.yek.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +26,9 @@ public class StudentController {
     @ResponseBody
     public JSONObject getStudentList( @RequestParam Map<String, Object> paramMap){
         JSONObject object = new JSONObject();
-        List<Student> strudentListByPage = studentService.getStrudentListByPage(paramMap);
-        object.put("page",strudentListByPage);
+        PageImpl studentsByPage = studentService.getStrudentListByPage(paramMap);
+        object.put("total", studentsByPage.getTotalElements());
+        object.put("rows",studentsByPage.getContent());
 
         return object;
     }
