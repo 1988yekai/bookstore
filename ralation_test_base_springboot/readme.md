@@ -25,6 +25,7 @@ value:是集合的属性名。（自己定义的属性名）
 - thymeleaf模板 https://blog.csdn.net/u012706811/article/details/52185345
 https://www.cnblogs.com/zhufu9426/p/7873153.html
 - bootstrap-table示例 https://blog.csdn.net/hanxue_tyc/article/details/54917227
+http://www.jb51.net/article/93248.htm
 
 ####QueryDSL
 参考网址 https://blog.csdn.net/liuchuanhong1/article/details/70244261?utm_source=gold_browser_extension
