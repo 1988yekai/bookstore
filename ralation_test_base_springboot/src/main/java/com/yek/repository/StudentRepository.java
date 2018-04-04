@@ -32,4 +32,5 @@ public interface StudentRepository extends JpaRepository<Student, Long>, Queryds
     Page<Student> findAll(Predicate predicate, Pageable pageable);
 
     Optional<Student> findOne(Predicate predicate);
+    List<Student> findAll(Predicate predicate);
 }

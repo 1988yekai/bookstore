@@ -1,15 +1,22 @@
 /**
  * Created by Administrator on 2018-03-31.
  */
+//全局变量定义
 var queryParams = {};
+
 $(document).ready(function(){
+    //根据窗口调整表格高度
+    $(window).resize(function() {
+        $('#students-table').bootstrapTable('resetView', {
+            height: tableHeight()
+        })
+    });
     //table init
     $('#students-table').bootstrapTable({
         method: 'post',
         contentType: "application/x-www-form-urlencoded",//必须要有！！！！
         url:"/student/list",//要请求数据的路径
-        // height:tableHeight(),//高度调整
-        toolbar: '#toolbar',//指定工具栏
+        height:tableHeight(),//高度调整
         striped: true, //是否显示行间隔色
         //dataField: "res",//bootstrap table 可以前端分页也可以后端分页，这里
         //我们使用的是后端分页，后端分页时需返回含有total：总记录数,这个键值好像是固定的
@@ -21,12 +28,12 @@ $(document).ready(function(){
         sidePagination:'server',//指定服务器端分页
         pageSize:10,//单页记录数
         pageList:[5,10,20,30],//分页步进值
-        showRefresh:true,//刷新按钮
-        showColumns:true,
-        clickToSelect: true,//是否启用点击选中行
-        toolbarAlign:'right',//工具栏对齐方式
-        buttonsAlign:'right',//按钮对齐方式
-        toolbar:'#toolbar',//指定工作栏
+        // showRefresh:true,//刷新按钮
+        // showColumns:true,
+        //工具栏设置
+        // buttonsAlign:'right',//按钮对齐方式
+        // toolbarAlign:'right',//工具栏对齐方式
+        // toolbar:'#toolbar',//指定工作栏
         columns:[
             {
                 title:'全选',
@@ -54,21 +61,17 @@ $(document).ready(function(){
             },
             {
                 title:'班级',
-                field:'cid',
+                field:'classes',
                 align:'center',
                 //列数据格式化
                 formatter:function(value,row,index){
-                    $.ajax({
-                        type: "POST",
-                        url: "some.php",
-                        data: {cid:value},
-                        success: function(msg){
-                            alert( "Data Saved: " + msg );
-                        }
-                    });
+                    return value.name;
+
                 }
             }
         ],
+        clickToSelect: true,//是否启用点击选中行
+
         classes:'table table-striped table-bordered table-hover ',
         //得到查询的参数
         queryParams : function (params) {
@@ -83,3 +86,26 @@ $(document).ready(function(){
         },
     });
 });
+//查询按钮事件
+$('#search_btn').click(function(){
+    $('#students-table').bootstrapTable('refresh');
+});
+//tableHeight函数
+function tableHeight(){
+    //可以根据自己页面情况进行调整
+
+    var h = $(document).height();//获取文档高度
+    // alert(h + " " +(h-100));
+    var h = $(window).height();//获取可见高度
+    // alert($("#h1id").outerHeight(true));
+    //$("#h1id").outerHeight(true) 获取 #h1id 的高度
+    return $(window).height() - $("#h1id").outerHeight(true)-40;
+};
+// $.ajax({
+//     type: "POST",
+//     url: "some.php",
+//     data: {cid:value},
+//     success: function(msg){
+//         alert( "Data Saved: " + msg );
+//     }
+// });

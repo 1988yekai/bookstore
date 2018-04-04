@@ -1,5 +1,7 @@
 package com.yek.service.impl;
 
+import com.querydsl.core.types.ExpressionUtils;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.yek.entity.QStudent;
 import com.yek.entity.Student;
@@ -12,6 +14,7 @@ import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.data.querydsl.QSort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -27,10 +30,13 @@ public class StudentServiceImpl implements StudentService {
     public Page<Student> getStrudentListByPage(Map<String, Object> param) {
         System.out.println(param);
 
-        BooleanExpression s1 = QStudent.student.name.eq("小东");
-        Optional<Student> studentOptional = studentRepository.findOne(s1);
+        Predicate predicate = QStudent.student.name.eq("小东");
+        Optional<Student> studentOptional = studentRepository.findOne(predicate);
         Student one = studentOptional.isPresent() ? studentOptional.get() : null;
         System.out.println(one);
+        predicate = ExpressionUtils.or(predicate, QStudent.student.age.intValue().lt(12));//多条件查询
+        List<Student> studentList = studentRepository.findAll(predicate);
+        System.out.println(studentList);
 
 //        PageRequest page = new PageRequest();
         int pageNumber = MapUtils.getInteger(param, "page") == null ? 1 : MapUtils.getInteger(param, "page");
