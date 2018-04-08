@@ -1,0 +1,43 @@
+配置MongoDB的yum源
+# 编辑文件
+vim /etc/yum.repos.d/mongodb-org-3.6.repo 
+
+# 添加以下内容
+[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+安装mongodb
+yum install -y mongodb-org
+相关操作
+# 启动
+systemctl start mongod.service
+
+# 停止
+systemctl stop mongod.service
+
+# 重启
+systemctl restart mongod.service
+编辑配置文件
+# 编辑默认配置文件
+vim /etc/mongod.conf
+
+# 数据存放位置
+storage:
+  dbPath: /var/lib/mongo
+  journal:
+    enabled: true
+#  engine:
+#  mmapv1:
+#  wiredTiger:
+
+# 网络相关配置
+net:
+  port: 27017    # 默认端口
+  bindIp: 0.0.0.0  # 监听IP配置，开启远程连接可以注释本行或者修改IP为0.0.0.0
+
+# 是否开启权限验证
+security:
+  authorization: enabled

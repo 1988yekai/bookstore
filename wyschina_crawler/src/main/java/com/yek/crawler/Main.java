@@ -32,8 +32,8 @@ public class Main {
         String myHomeUrl = "http://w.wyschina.com/order/firstPage.action";
 
         List<BasicNameValuePair> list = new LinkedList<>();
-        list.add(new BasicNameValuePair("username", "xxxxx"));
-        list.add(new BasicNameValuePair("password", "wys7xxxx"));
+        list.add(new BasicNameValuePair("username", "bellye"));
+        list.add(new BasicNameValuePair("password", "wys745839"));
         list.add(new BasicNameValuePair("random", httpClientUtil.getCaptcha(captchaUrl)));
         list.add(new BasicNameValuePair("url", "http://w.wyschina.com/custom/login.action?action=http%3A%2F%2Fw.wyschina.com%2Fhome%2Fhome.action"));
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(list, "UTF-8");
@@ -67,11 +67,11 @@ public class Main {
         httpGet.addHeader("Accept-Encoding", "gzip, deflate");
         httpGet.addHeader("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3");
         httpGet.addHeader("Connection", "keep-alive");
-        httpGet.addHeader("Host", UrlUtil.getHost(homeUrl));
+        httpGet.addHeader("Host", UrlUtil.getHost(loginUrl1));
         httpGet.addHeader("Referer", "http://sso.wyschina.com/login.jsp?url=http%3A%2F%2Fw.wyschina.com%2Fcustom%2Flogin.action%3Faction%3Dhttp%253A%252F%252Fw.wyschina.com%252Fhome%252Fhome.action");
         httpGet.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0");
         response = httpClientUtil.getHttpCilent().execute(httpGet);
-        httpClientUtil.setCookieStore(response);
+//        httpClientUtil.setCookieStore(response);
 
         String getResult = EntityUtils.toString(response.getEntity());// 获得返回的结果
         System.out.println(getResult);
@@ -95,7 +95,7 @@ public class Main {
         httpGet.addHeader("Accept-Encoding", "gzip, deflate");
         httpGet.addHeader("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3");
         httpGet.addHeader("Connection", "keep-alive");
-        httpGet.addHeader("Host", UrlUtil.getHost(homeUrl));
+        httpGet.addHeader("Host", UrlUtil.getHost(myHomeUrl));
         httpGet.addHeader("Referer", "http://sso.wyschina.com/login.jsp?url=http%3A%2F%2Fw.wyschina.com%2Fcustom%2Flogin.action%3Faction%3Dhttp%253A%252F%252Fw.wyschina.com%252Fhome%252Fhome.action");
         httpGet.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0");
         response = httpClientUtil.getHttpCilent().execute(httpGet);
