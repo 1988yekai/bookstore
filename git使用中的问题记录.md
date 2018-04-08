@@ -23,6 +23,8 @@
 #2. git pull 命令用法：  
 > git pull origin master
 
+> git pull --progress -v --no-rebase "origin"
+
 #3. git push 命令用法：  
 > git push -u origin master 
 
