@@ -18,7 +18,7 @@ public interface ClassesRepository extends CrudRepository<Classes, Long> {
      */
     Classes findByName(String name);
 
-    List<Classes> findAll();
+    Iterable<Classes> findAll();
 
 //    @Query(value = "SELECT u.uid,u.username,u.name,u.password,u.salt,u.state FROM UserInfo u",
 //            countQuery = "SELECT count(*) FROM UserInfo",

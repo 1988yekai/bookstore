@@ -1,5 +1,6 @@
 package com.yek.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.yek.entity.Classes;
 import com.yek.entity.Student;
 import com.yek.repository.ClassesRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -23,8 +25,12 @@ public class ClassesController {
     @RequestMapping("/list")
     @ResponseBody
     public Object getClassesList(){
-        List<Classes> classesList = classesRepository.findAll();
-        System.out.println(classesList);
+        Iterable<Classes> classesList = classesRepository.findAll();
+        Iterator<Classes> iterator = classesList.iterator();
+        while (iterator.hasNext()){
+            Classes classes = iterator.next();
+            System.out.println(classes.getStudents());
+        }
         Optional<Classes> optional = classesRepository.findById(1L);
         Classes classes = optional.get();
         System.out.println(classes);

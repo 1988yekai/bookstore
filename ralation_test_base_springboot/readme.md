@@ -1,5 +1,4 @@
-#springboot 学习项目
-
+#springboot jpa 学习项目
 
 ####关于一对多报错问题
 报错原因是：在双向一对多的时候，在序列化和反序列化A是，需要把B里的内容取出，而且A里面又有B的集合，如此反复，便会出现死循环。
@@ -102,3 +101,49 @@ QueryDslPredicateExecutor接口提供了如下方法：
     sort.and(QStudent.student.sid.desc());//添加下一个排序条件
     QPageRequest page = new QPageRequest(pageNumber - 1, pageSize, sort);
 
+###关于url中含（.）的问题
+> url完全匹配：
+
+    package com.yek;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.support.SpringBootServletInitializer;
+    import org.springframework.cache.annotation.EnableCaching;
+    import org.springframework.context.annotation.ImportResource;
+    import org.springframework.scheduling.annotation.EnableScheduling;
+    import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+    import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+    import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+    
+    @SpringBootApplication
+    @EnableCaching
+    @EnableScheduling
+    @ImportResource(locations = { "${config.location:classpath:}spring/spring-mvc.xml" })
+    public class EntryStart extends WebMvcConfigurationSupport {
+        @Override
+        public void configurePathMatch(PathMatchConfigurer configurer) {
+    
+            configurer.setUseSuffixPatternMatch(false)
+    
+                    .setUseTrailingSlashMatch(false);
+    
+        }
+        @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/**")
+                    .addResourceLocations("classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/","classpath:/public/");
+        }
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+            return builder.sources(EntryStart.class);
+        }
+    
+        public static void main(String[] args) throws Exception {
+            SpringApplication.run(EntryStart.class, args);
+        }
+    }
+> 方法2 
+继承 WebMvcConfigurerAdapter 复写方法 addResourceHandlers和addResourceHandlers
+###关于 mongodb 自动加载问题
+启动类添加注释
+> @SpringBootApplication(exclude = MongoAutoConfiguration.class)
