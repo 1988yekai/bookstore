@@ -1,6 +1,9 @@
 /**
  * Created by Administrator on 2018-03-31.
  */
+//var json1 = {"房屋所有权人":"卢辉、吴玉","座落":"钦州市钦州大道122号福盛家园2号楼3单元1807号"};
+//alert(json1.房屋所有权人);
+//alert(json1.座落);
 //全局变量定义
 var queryParams = {};
 

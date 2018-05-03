@@ -32,8 +32,8 @@ public class Main {
         String myHomeUrl = "http://w.wyschina.com/order/firstPage.action";
 
         List<BasicNameValuePair> list = new LinkedList<>();
-        list.add(new BasicNameValuePair("username", "bellye"));
-        list.add(new BasicNameValuePair("password", "wys745839"));
+        list.add(new BasicNameValuePair("username", "bxxx"));
+        list.add(new BasicNameValuePair("password", "wys7xxx"));
         list.add(new BasicNameValuePair("random", httpClientUtil.getCaptcha(captchaUrl)));
         list.add(new BasicNameValuePair("url", "http://w.wyschina.com/custom/login.action?action=http%3A%2F%2Fw.wyschina.com%2Fhome%2Fhome.action"));
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(list, "UTF-8");
