@@ -1,0 +1,18 @@
+1.安装命令及示例：
+yum -y install docker-io
+service docker start
+docker run hello-world
+
+2.错误：
+vim /etc/sysconfig/docker
+修改 --selinux-enabled=false：
+OPTIONS='--selinux-enabled=false --log-driver=journald --signature-verification=false'
+
+参考：https://blog.csdn.net/lyqhf153/article/details/79585976
+
+3.国内镜像： /etc/docker/daemon.json 
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+  or 2 to 1
+  "registry-mirrors": ["https://registry.docker-cn.com"] 
+}
