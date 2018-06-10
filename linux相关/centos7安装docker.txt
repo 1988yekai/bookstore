@@ -1,3 +1,4 @@
+方法一：
 1.安装命令及示例：
 yum -y install docker-io
 service docker start
@@ -16,3 +17,51 @@ OPTIONS='--selinux-enabled=false --log-driver=journald --signature-verification=
   or 2 to 1
   "registry-mirrors": ["https://registry.docker-cn.com"] 
 }
+
+--------------------------------------------------------
+方法二：
+1. 添加仓库
+添加阿里云的Docker仓库：
+
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum makecache
+
+2. 安装Docker
+执行以下命令，安装最新版Docker：
+
+yum install docker-ce -y
+
+3. 安装成功后，如下所示：
+
+已安装:
+  docker-ce.x86_64 0:18.03.1.ce-1.el7.centos                                                           
+
+作为依赖被安装:
+  pigz.x86_64 0:2.3.3-1.el7.centos                                                                     
+
+作为依赖被升级:
+  libseccomp.x86_64 0:2.3.1-3.el7                                                                      
+
+完毕！
+
+4. docker --version 查看版本
+5. 启动Docker
+systemctl start docker & systemctl enable docker
+6.运行一条命令验证一下：
+docker run hello-world
+
+********************************************************
+卸载docker
+1.查询安装过的包
+yum list installed | grep docker
+2.删除安装的软件包
+yum -y remove docker*
+3.删除镜像/容器等
+rm -rf /var/lib/docker
+********************************************************
+
+
+备注：
+centos 界面切换： 
+命令模式： systemctl set-default multi-user.target
+图形模式： systemctl set-default graphical.target
