@@ -49,6 +49,7 @@ Redis服务查看、开启、关闭:
 a.通过ps -ef|grep redis命令查看Redis进程
 b.开启Redis服务操作通过/etc/init.d/redis_6379 start命令，也可通过（service redis_6379 start）
 c.关闭Redis服务操作通过/etc/init.d/redis_6379 stop命令，也可通过（service redis_6379 stop）
+# 禁止redis开机启动  systemctl disable redis_6379.service
 
 redis.conf 的配置信息
 1、daemonize 如果需要在后台运行，把该项改为yes
