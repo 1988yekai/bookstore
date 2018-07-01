@@ -49,3 +49,6 @@ ccc
     sed -e "$temp" -i 1.txt
     done < 2.txt
 ```
+
+## 批量查找替换 find sed, 把2.txt中内容aaa替换bbb
+> find . -name 2.txt -exec sed -i -e "s|aaa|bbb|g" {} \;
