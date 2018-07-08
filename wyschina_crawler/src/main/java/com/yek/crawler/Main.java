@@ -1,9 +1,9 @@
 package com.yek.crawler;
 
-import com.yek.crawler.util.CustomHttpGet;
-import com.yek.crawler.util.CustomHttpPost;
-import com.yek.crawler.util.MyHttpClientUtil;
-import com.yek.crawler.util.UrlUtil;
+import com.yek.util.CustomHttpGet;
+import com.yek.util.CustomHttpPost;
+import com.yek.util.MyHttpClientUtil;
+import com.yek.util.UrlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

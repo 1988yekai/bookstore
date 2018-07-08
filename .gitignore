@@ -33,3 +33,6 @@ hs_err_pid*
 /html/package-lock.json
 /.idea/vcs.xml
 /.idea
+
+*/**/username.properties
+*.back

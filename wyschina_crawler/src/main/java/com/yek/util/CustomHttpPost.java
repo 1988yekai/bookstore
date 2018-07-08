@@ -1,4 +1,4 @@
-package com.yek.crawler.util;
+package com.yek.util;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;

@@ -1,0 +1,9 @@
+http://web.chinahrt.com/course/play_video?sectionId=b897da5a-68ad-4843-b335-47bce878e850&courseId=e904bf4f-b0df-4050-b1f4-7cd6b796fb2e&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=e5aa9697-8503-418d-88c1-ce6514798f27&courseId=e904bf4f-b0df-4050-b1f4-7cd6b796fb2e&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=26575ba1-f645-4b10-b65c-0894ea4c3270&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=461f069b-943d-42b9-83e0-189c2f90affa&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=a07b7be4-1f21-4ff2-bb5a-00beebe71f58&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=f0387ba7-9d49-4305-ae3d-7b64710e49f6&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=f96e4169-b87d-489f-8261-aea5efc6fec2&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=7ebc8f7d-848a-4d70-b70e-0792c192c217&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61
+http://web.chinahrt.com/course/play_video?sectionId=a9e63db7-eb5a-4117-ba3f-6af76c5b4767&courseId=8d4427ed-95fd-4a2f-a411-f5e1347a0014&trainplanId=def1f7366eb049c49178e974f4fcff61

@@ -1,8 +1,8 @@
-package com.yek.crawler.util;
+package com.yek.util;
 
 /**
  * Created with IntelliJ IDEA.
- * User: yangd
+ * User: yek
  * Date: 15-6-1
  * Time: 下午10:47
  * To change this template use File | Settings | File Templates.
