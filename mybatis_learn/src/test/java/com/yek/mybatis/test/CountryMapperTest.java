@@ -1,7 +1,10 @@
 package com.yek.mybatis.test;
 
 import com.yek.mybatis.entity.Country;
+import com.yek.mybatis.entity.SysUser;
+import com.yek.mybatis.entity.SysUserExample;
 import com.yek.mybatis.mapper.CountryMapper;
+import com.yek.mybatis.mapper.SysUserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -40,6 +43,12 @@ public class CountryMapperTest {
             CountryMapper mapper = sqlSession.getMapper(CountryMapper.class);
             List<Country> countryList = mapper.selectAll();
             printCountryList(countryList);
+
+            SysUserMapper sysUserMapper = sqlSession.getMapper(SysUserMapper.class);
+            SysUserExample sysUserExample = new SysUserExample();
+            sysUserExample.createCriteria().andUserPasswordEqualTo("123456");
+            List<SysUser> sysUserList = sysUserMapper.selectByExample(sysUserExample);
+            sysUserList.stream().forEach(sysUser -> System.out.println(sysUser));
         } finally {
             sqlSession.close();
         }

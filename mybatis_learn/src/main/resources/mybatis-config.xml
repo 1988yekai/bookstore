@@ -29,6 +29,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/yek/mybatis/mapper/CountryMapper.xml"/>
+        <!--<mapper resource="com/yek/mybatis/mapper/CountryMapper.xml"/>-->
+        <package name="com.yek.mybatis.mapper"/>
     </mappers>
 </configuration>

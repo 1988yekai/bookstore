@@ -34,3 +34,13 @@ INSERT INTO `country` VALUES ('2', '美国', 'US');
 INSERT INTO `country` VALUES ('3', '英国', 'GB');
 INSERT INTO `country` VALUES ('4', '俄罗斯', 'RU');
 INSERT INTO `country` VALUES ('5', '法国', 'FR');
+
+create table sys_user(
+    id int not null auto_increment comment '用户id',
+    user_name varchar(50) comment '用户名',
+    user_password varchar(50),
+    user_email varchar(50),
+    user_info varchar(512),
+    create_time datetime comment '创建时间',
+    primary key(id)
+);
