@@ -32,7 +32,7 @@
         </javaModelGenerator>
 
         <!--生成xml mapper文件 路径 -->
-        <sqlMapGenerator targetPackage="com.yek.mybatis.entity" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="com.yek.mybatis.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="ture"/>
         </sqlMapGenerator>
 
@@ -43,6 +43,10 @@
 
         <!--对应数据库表名，多个表，请复制指定 -->
         <table tableName="sys_user"></table>
+        <table tableName="sys_privilege"></table>
+        <table tableName="sys_role"></table>
+        <table tableName="sys_role_privilege"></table>
+        <table tableName="sys_user_role"></table>
 
     </context>
 </generatorConfiguration>
