@@ -3,6 +3,8 @@ package com.yek.mybatis.mapper;
 import com.yek.mybatis.entity.SysRole;
 import com.yek.mybatis.entity.SysRoleExample;
 import java.util.List;
+
+import com.yek.mybatis.entity.vo.SysRole2User;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysRoleMapper {
@@ -27,4 +29,6 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+    List<SysRole2User> selectSysRole2User();
 }
