@@ -5,6 +5,8 @@ import com.yek.mybatis.base.BaseMapperTest;
 import com.yek.mybatis.entity.Country;
 import com.yek.mybatis.entity.SysUser;
 import com.yek.mybatis.entity.SysUserExample;
+import com.yek.mybatis.entity.vo.SysUserPo1;
+import com.yek.mybatis.entity.vo.SysUserPo2;
 import com.yek.mybatis.mapper.CountryMapper;
 import com.yek.mybatis.mapper.SysUserMapper;
 import org.apache.ibatis.io.Resources;
@@ -50,6 +52,11 @@ public class SysUserMapperTest extends BaseMapperTest{
             sysUserList.stream().forEach(sysUser -> System.out.println(JSON.toJSONString(sysUser)));
             Assert.assertNotNull(sysUserList);
             Assert.assertTrue(sysUserList.size()>0);
+            SysUserPo1 sysUserPo1 = sysUserMapper.selectUserAndRoleById(1);
+            System.out.println(JSON.toJSONString(sysUserPo1));
+
+            List<SysUserPo2> sysUserPo2s = sysUserMapper.selectAllUserAndRole();
+            System.out.println(JSON.toJSONString(sysUserPo2s));
         } finally {
             sqlSession.close();
         }
