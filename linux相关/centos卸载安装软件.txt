@@ -1,0 +1,7 @@
+卸载:
+1. 查询以安装软件
+    rpm -qa | grep jdk
+2. 卸载    yum -y remove xxxxx包名
+安装:
+1. 搜索相应包 yum search openjdk
+2. yum install -y xxx包名
