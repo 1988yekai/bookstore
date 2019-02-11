@@ -50,7 +50,7 @@
         this.password = "";
       },
       submit1: function () {
-        var url = "http://localhost:8090/bookstore/Login/isLogin";
+        var url = "http://localhost:8090/bookstore/Login/doLogin";
         var formData = new FormData();
 
         // append string
@@ -60,21 +60,23 @@
         //在vue-resources中会自动在路径上加入callback的函数名，得到的结果就是result
         this.$http.post(url, formData).then(function (result) {
           var res = result.body;
+          console.log(JSON.stringify(res));
           if (res.code == '0002') {
             // http://localhost:8080/one.html
-//            alert("登录成功！");
-            this.$alert('这是一段内容', '标题名称', {
+          //  alert("登录失败！");
+            this.$alert(res.msg, '', {
               confirmButtonText: '确定',
-              callback: action => {
-                this.$message({
-                  type: 'info',
-                  message: `action: ${ action }`
-                });
-              }
+              // callback: action => {
+              //   this.$message({
+              //     type: 'info',
+              //     message: `action: ${ action }`
+              //   });
+              // }
             });
-            //js url跳转
-            window.location.assign("http://localhost:8080/one.html");
-          }
+            
+          } else if (res.code == '0'){
+          //js url跳转
+            window.location.assign("http://localhost:8080/one.html");}
         });
       }
     }
