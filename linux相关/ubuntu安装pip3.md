@@ -37,6 +37,16 @@
 
 ## pip换国内源：
 
+pip.conf 文件存放位置
+
+**Linux/Unix:**
+
+```
+/etc/pip.conf
+~/.pip/pip.conf
+~/.config/pip/pip.conf
+```
+
 方案一：
 
 修改配置文件
