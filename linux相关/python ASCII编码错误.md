@@ -6,6 +6,10 @@ UnicodeEncodeError: ‘ascii’ codec can’t encode characters in ordinal not i
 
 方法一：
 
+[ubuntu 设置字符集 locale（解决乱码问题）](https://www.cnblogs.com/wclwcw/p/6758353.html) https://www.cnblogs.com/wclwcw/p/6758353.html （优选）
+
+方法二：
+
 1. 参考 https://blog.csdn.net/th_num/article/details/80685389
 
 2. 查看编码
@@ -43,9 +47,9 @@ UnicodeEncodeError: ‘ascii’ codec can’t encode characters in ordinal not i
 
    
 
-方法二：
+方法三：
 
-1. 添加源
+1. 添加源（1804）
 
    打开文件：
 
