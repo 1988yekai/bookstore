@@ -8,6 +8,8 @@ UnicodeEncodeError: ‘ascii’ codec can’t encode characters in ordinal not i
 
 [ubuntu 设置字符集 locale（解决乱码问题）](https://www.cnblogs.com/wclwcw/p/6758353.html) https://www.cnblogs.com/wclwcw/p/6758353.html （优选）
 
+18.04 添加中文环境，设置LANG环境变量 https://blog.csdn.net/j___t/article/details/97705231
+
 方法二：
 
 1. 参考 https://blog.csdn.net/th_num/article/details/80685389
