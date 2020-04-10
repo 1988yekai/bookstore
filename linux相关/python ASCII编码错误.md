@@ -8,7 +8,15 @@ UnicodeEncodeError: ‘ascii’ codec can’t encode characters in ordinal not i
 
 [ubuntu 设置字符集 locale（解决乱码问题）](https://www.cnblogs.com/wclwcw/p/6758353.html) https://www.cnblogs.com/wclwcw/p/6758353.html （优选）
 
-18.04 添加中文环境，设置LANG环境变量 https://blog.csdn.net/j___t/article/details/97705231
+18.04 添加中文支持，设置LANG环境变量 https://blog.csdn.net/j___t/article/details/97705231
+1. 添加中文支持
+`sudo apt-get -y install language-pack-zh-hans`
+2. `locale-gen en_US.UTF-8`
+3. 设置LANG环境变量
+vim ~/.bashrc 添加
+
+   `export LANG=en_US.UTF-8`
+执行 source~/.bashrc
 
 方法二：
 
