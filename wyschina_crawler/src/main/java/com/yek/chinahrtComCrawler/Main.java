@@ -23,9 +23,10 @@ public class Main {
         properties.load(new FileInputStream("./config/username.properties"));
         crawler.login(httpClientUtil, loginUrl, properties.getProperty("username"), properties.getProperty("password"));
         //2. get trainplanId
-        String tranplanIdUrl = "http://web.chinahrt.com/trainplan";
-        String tranplaId = crawler.getTranplaId(tranplanIdUrl, httpClientUtil);
+//        String tranplanIdUrl = "http://web.chinahrt.com/trainplan";
+//        String tranplaId = crawler.getTranplaId(tranplanIdUrl, httpClientUtil);
         //3. loop visit url
+//        课程主页 https://web.chinahrt.com/studying/selected_course?trainplanId=77cba5cedd2a461aab5d0b14033afef5
         List<String> urlList = FileUtil.getContentList("./config/chinahrtUrlList.txt");
         int i = 0;
         for (String url : urlList) {

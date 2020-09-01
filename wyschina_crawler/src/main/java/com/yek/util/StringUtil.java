@@ -21,4 +21,11 @@ public class StringUtil{
             return "";
         }
     }
+
+    public static void main(String[] args) {
+        String test = " attrset.recordId = \"b6e5334d8061449fbb52749d13538dd7\";";
+        String recordId = StringUtil.regex(test, "attrset.recordId\\s?=\\s?\"(.*?)\"");
+        System.out.println(recordId);
+
+    }
 }

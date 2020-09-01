@@ -120,31 +120,34 @@ public class Crawler {
         businessId: gp5
          */
         Map<String, String> paramMap = new HashMap<>();
-        String studyCode = StringUtil.regex(iframeContent, "attrset.studyCode=\"(.*?)\"");
-        String recordUrl = StringUtil.regex(iframeContent, "attrset.recordUrl=\"(.*?)\"");
-        String updateRedisMap = StringUtil.regex(iframeContent, "attrset.updateRedisMap=\"(.*?)\"");
-        String recordId = StringUtil.regex(iframeContent, "attrset.recordId=\"(.*?)\"");
-        String sectionId = StringUtil.regex(iframeContent, "attrset.sectionId=\"(.*?)\"");
-        String signId = StringUtil.regex(iframeContent, "attrset.signId=\"(.*?)\"");
-        String businessId = StringUtil.regex(iframeContent, "attrset.businessId=\"(.*?)\"");
+        String studyCode = StringUtil.regex(iframeContent, "attrset.studyCode\\s?=\\s?\"(.*?)\"");
+//        String recordUrl = StringUtil.regex(iframeContent, "attrset.recordUrl=\"(.*?)\"");
+        String updateRedisMap = StringUtil.regex(iframeContent, "attrset.updateRedisMap\\s?=\\s?\"(.*?)\"");
+        String recordId = StringUtil.regex(iframeContent, "attrset.recordId\\s?=\\s?\"(.*?)\"");
+        String sectionId = StringUtil.regex(iframeContent, "attrset.sectionId\\s?=\\s?\"(.*?)\"");
+        String signId = StringUtil.regex(iframeContent, "attrset.signId\\s?=\\s?\"(.*?)\"");
+        String businessId = StringUtil.regex(iframeContent, "attrset.businessId\\s?=\\s?\"(.*?)\"");
         String time = 0 + "." + Double.valueOf(Math.random() * 1000).intValue();
         String result = "{\"status\":\"0\"}";
-        paramMap.put("studyCode",studyCode);
-        paramMap.put("recordUrl",recordUrl);
-        paramMap.put("updateRedisMap",updateRedisMap);
-        paramMap.put("recordId",recordId);
-        paramMap.put("sectionId",sectionId);
-        paramMap.put("signId",signId);
-        paramMap.put("businessId",businessId);
-        paramMap.put("time",time);
+        paramMap.put("studyCode", studyCode);
+//        paramMap.put("recordUrl",recordUrl);
+        paramMap.put("updateRedisMap", updateRedisMap);
+        paramMap.put("recordId", recordId);
+        paramMap.put("sectionId", sectionId);
+        paramMap.put("signId", signId);
+        paramMap.put("businessId", businessId);
+        paramMap.put("time", time);
         logger.debug(paramMap.toString());
-        while ("{\"status\":\"0\"}".equals(result)){
-            time = (int)(Double.parseDouble(paramMap.get("time")) + 30) + "." + Double.valueOf(Math.random() * 1000).intValue();
-            paramMap.put("time",time);
+        while ("{\"status\":\"0\"}".equals(result)) {
+            time = (int) (Double.parseDouble(paramMap.get("time")) + 30) + "." + Double.valueOf(Math.random() * 1000).intValue();
+            paramMap.put("time", time);
             try {
                 result = getPostContent("http://videoadmin.chinahrt.com.cn/videoPlay/takeRecord", httpClientUtil, iframeUrl, paramMap);
-                logger.debug(result);
-                Thread.sleep(1100);
+                logger.debug("time: {}  --  result: {}", time, result);
+                Thread.sleep(1500);
+                if (Double.parseDouble(time) > 60 * 35) {
+                    break;
+                }
             } catch (Exception e) {
                 logger.error("", e);
                 continue;
